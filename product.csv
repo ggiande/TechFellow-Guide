@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 brand, product_name, shipping
 EVGA,EVGA GeForce GTX 1660 SC ULTRA GAMING| 06G-P4-1067-KR| 6GB GDDR5| Dual Fan| Metal Backplate,Free Shipping
 ASUS,ASUS ROG Strix Radeon RX 5700 XT ROG-STRIX-RX5700XT-O8G-GAMING Video Card,Free Shipping
@@ -11,3 +12,6 @@ GIGABYTE,GIGABYTE Radeon RX 580 GAMING 8G (rev. 2.0) Graphics Card| PCIe 3.0| 8G
 GIGABYTE,GIGABYTE Radeon RX 5700 XT DirectX 12 GV-R57XTGAMING-8GD Video Card,Free Shipping
 XFX,XFX Radeon RX 5600 XT RX-56XT6DF46 Video Card THICC II PRO-14GBPS 6GB BOOST UP TO 1620M D6  3xDP HDMI,Free Shipping
 ASRock,ASRock Challenger D Radeon RX 5500 XT DirectX 12 RX5500XT CLD 4GO Video Card,Free Shipping
+=======
+brand, product_name, shipping
+>>>>>>> 7a4415c123c5d2d72d92f475a0a9c7b24c70cf7e
