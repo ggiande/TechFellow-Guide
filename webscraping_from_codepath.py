@@ -38,12 +38,28 @@ for text in page_of_info:
         sections.append(s)
         # clears it to create a new setion
         s = []
-        s.append(text)
+        # only saves the text
+        s.append(text.text)
     # there are empty places which will cause errors
+    elif text in ul:
+        for li in text:
+            a = li.find('a')
+            # line above will return -1 for spaces which we don't need
+            if a != -1:
+                # only saves the text
+                s.append(a.text)
+                # if its a link it wont at the other part to it
+                if 'http' in a['href']:
+                    s.append(a['href'])
+                # if its only part of the link itll add the rest
+                else:
+                    s.append(AddtoLink + a['href'])
+    # it will sometimes be empty lines which it should ignore
     elif text == '\n':
         continue
     else:
-        s.append(text)
+        # only saves the text
+        s.append(text.text)
 # first place is emtpy
 del sections[0]
 
@@ -51,7 +67,7 @@ del sections[0]
 for s in sections:
     print("")
     for i in s:
-        print(i.text, end=None)
+        print(i, end=None)
 
 
 # to get links and text from list items in un ordered lists & saves to dict
