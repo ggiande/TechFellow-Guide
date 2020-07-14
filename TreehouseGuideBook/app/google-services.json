@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "983881738430",
+    "firebase_url": "https://codepath-guide.firebaseio.com",
+    "project_id": "codepath-guide",
+    "storage_bucket": "codepath-guide.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983881738430:android:87ce85f6b6dd82d920d6ef",
+        "android_client_info": {
+          "package_name": "com.example.treehouseguidebook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "983881738430-08dsieqmkmfbe24fd51mvk2d5jp0tkop.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOMvU8FMwul3Xhq1UK-hi_nHPU7CRy2_M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "983881738430-08dsieqmkmfbe24fd51mvk2d5jp0tkop.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

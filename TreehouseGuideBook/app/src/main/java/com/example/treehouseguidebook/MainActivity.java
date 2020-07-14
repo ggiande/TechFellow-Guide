@@ -1,42 +1,54 @@
 package com.example.treehouseguidebook;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
 public class MainActivity extends AppCompatActivity {
 
+    private BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // FOR TOP TOOLBAR
-        // Find the toolbar view inside the activity layout
-        Toolbar toolbar = findViewById(R.id.toptoolbar);
-        // Sets the Toolbar to act as the ActionBar for this Activity window.
-        // Make sure the toolbar exists in the activity and is not null
-        setSupportActionBar(toolbar);
+        bottomNavigationView=findViewById(R.id.bottom_navigation);
 
-        // FOR BOTTOM TOOLBAR
-        // Find the toolbar view inside the activity layout
-        Toolbar bottomToolbar = findViewById(R.id.bottomtoolbar);
-        // Sets the Toolbar to act as the ActionBar for this Activity window.
-        // Make sure the toolbar exists in the activity and is not null
-        setSupportActionBar(bottomToolbar);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                Fragment fragment;
+                switch (menuItem.getItemId()) {
+                    case R.id.opGuide:
+                        //fragment = fragment1;
+                        break;
+                    case R.id.opBell:
+                        //fragment = fragment2;
+                        break;
+                    case R.id.opChat:
+                        //fragment = fragment2;
+                        break;
+                    case R.id.opList:
+                        //fragment = fragment2;
+                        break;
+                    case R.id.opBm:
+                    default:
+                        //fragment = fragment3;
+                        break;
+                }
+                return true;            }
+        });
+
 
     }
 
-    // Menu icons are inflated just as they were with actionbar
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        getMenuInflater().inflate(R.menu.bottom_menu, menu);
-
-        return true;
-    }
 
 
 

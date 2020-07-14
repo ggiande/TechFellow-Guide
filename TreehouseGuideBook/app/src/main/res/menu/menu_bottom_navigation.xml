@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <item
+        android:id="@+id/opBm"
+        android:icon="@drawable/ic_bookmark"
+        android:title="BookMark"
+        app:showAsAction="always"
+        android:color="@android:color/white"
+        />
+    <item
+        android:id="@+id/opGuide"
+        android:icon="@drawable/ic_books"
+        android:visible="true"
+        app:showAsAction="always"
+        android:color="@android:color/white"
+
+        android:title="TODO" />
+    <item
+        android:id="@+id/opBell"
+        android:icon="@drawable/ic_notifications"
+        android:visible="true"
+        app:showAsAction="always"
+        android:title="TODO" />
+    <item
+        android:id="@+id/opChat"
+        android:icon="@drawable/ic_chat_bubble"
+        android:title="chat"
+        android:visible="true"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/opList"
+        android:icon="@drawable/ic_calendar"
+        android:visible="true"
+        app:showAsAction="always"
+        android:title="TODO" />
+</menu>

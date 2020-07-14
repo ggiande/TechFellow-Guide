@@ -6,25 +6,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="@color/white"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/black">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toptoolbar"
-        android:minHeight="?attr/actionBarSize"
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:titleTextColor="@android:color/white"
-        android:background="?attr/colorPrimary">
-    </androidx.appcompat.widget.Toolbar>
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/menu_bottom_navigation"
+        android:background="@color/white"
 
+    />
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/bottomtoolbar"
+    <View
         android:layout_width="match_parent"
-        android:layout_gravity="bottom"
-        android:background="?attr/colorPrimary"
-        android:layout_height="?attr/actionBarSize"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        android:layout_height="4dp"
+        android:layout_above="@+id/bottom_navigation"
+        android:background="@color/white"></View>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
