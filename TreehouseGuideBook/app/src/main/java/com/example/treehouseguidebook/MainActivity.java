@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                         //fragment = fragment3;
                         break;
                 }
-                return true;            }
+                return true;     }
         });
 
 
