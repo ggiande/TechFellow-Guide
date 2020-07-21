@@ -1,6 +1,13 @@
 import bs4
 from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
+import pyrebase
+
+firebase = pyrebase.initialize_app(config)
+
+db = firebase.database()
+db.child("sections")
+
 # from package import library as alias
 
 # Url to be scraped
@@ -63,12 +70,34 @@ for text in page_of_info:
 # first place is emtpy
 del sections[0]
 
-# to print it
-for s in sections:
-    print("")
-    for i in s:
-        print(i, end=None)
+db = firebase.database()
 
+# data = {"name": "Mortimer 'Morty' Smith"}
+# db.child("users").child("Morty").set(data)
+
+# to print it
+counter = 0
+links = []
+for s in sections:
+    c = 0
+    #print (s[0])
+    for i in s:
+        if i != "":
+            if c != 0:
+                if "https" in i:
+                    data = {"link" : i}
+                    db.child("Guides").child(f"section{counter}").push(data)
+                else:
+                    data = {"desc" : i}
+                    db.child("Guides").child(f"section{counter}").push(data)
+            else:
+                data = {f"Header" : i}
+                db.child("Guides").child(f"section{counter}").push(data)
+        c += 1
+    counter += 1
+"""print("")
+    for i in s:
+        print(i, end=None)"""
 
 # to get links and text from list items in un ordered lists & saves to dict
 """codepath_resources = {"headers" : [], "links" : []}
