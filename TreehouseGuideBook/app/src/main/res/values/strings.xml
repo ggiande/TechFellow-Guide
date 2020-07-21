@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">Treehouse Guide Book</string>
     <string name="settings_string">settings</string>
+    <string name="guide_string">Guide</string>
+    <string name="bookmark_String">BookMark</string>
+    <string name="notifications_String">notifications</string>
+    <string name="chat_string">chat</string>
+    <string name="calendar_string">Calendar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
