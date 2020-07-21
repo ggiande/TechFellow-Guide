@@ -140,8 +140,6 @@ public class LoginActivity extends AppCompatActivity {
     public void goHome(User curr)
     {
         Intent i= new Intent(this,MainActivity.class);
-        //b.putString("pKey",parentKey);
-        //i.putExtra("current", (Parcelable) curr);
         startActivity(i);
         finish();
     }
