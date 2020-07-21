@@ -13,7 +13,6 @@
         android:icon="@drawable/ic_bookmark"
         android:title="@string/bookmark_String"
         app:showAsAction="ifRoom"
-
         />
     <item
         android:id="@+id/opBell"
