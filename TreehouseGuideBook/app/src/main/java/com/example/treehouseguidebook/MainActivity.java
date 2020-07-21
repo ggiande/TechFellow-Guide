@@ -40,9 +40,6 @@ public class MainActivity extends AppCompatActivity {
                 } else if (menuItem.getItemId() == R.id.opChat){
 //                    fragment = new GuideFragment();
                     Toast.makeText(MainActivity.this, "Clicked on Chat", Toast.LENGTH_SHORT).show();
-                } else if (menuItem.getItemId() == R.id.opList) {
-//                    fragment = new GuideFragment();
-                    Toast.makeText(MainActivity.this, "Clicked on Calendar/List", Toast.LENGTH_SHORT).show();
                 } else if (menuItem.getItemId() == R.id.opBm) {
 //                    fragment = new GuideFragment();
                     Toast.makeText(MainActivity.this, "Clicked on Bookmarks", Toast.LENGTH_SHORT).show();
