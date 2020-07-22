@@ -1,6 +1,13 @@
 import bs4
 from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
+import pyrebase
+
+firebase = pyrebase.initialize_app(config)
+
+db = firebase.database()
+db.child("sections")
+
 # from package import library as alias
 
 # Url to be scraped
@@ -63,12 +70,66 @@ for text in page_of_info:
 # first place is emtpy
 del sections[0]
 
-# to print it
-for s in sections:
-    print("")
-    for i in s:
-        print(i, end=None)
+db = firebase.database()
 
+# data = {"name": "Mortimer 'Morty' Smith"}
+# db.child("users").child("Morty").set(data)
+
+# to print it
+# counter = 0
+# links = []
+# for s in sections:
+#     c = 0
+#     #print (s[0])
+#     for i in s:
+#         if i != "":
+#             if c != 0:
+#                 if "https" in i:
+#                     data = {"link" : i}
+#                     db.child("Guides").child(f"section{counter}").push(data)
+#                 else:
+#                     data = {"desc" : i}
+#                     db.child("Guides").child(f"section{counter}").push(data)
+#             else:
+#                 data = {f"Header" : i}
+#                 db.child("Guides").child(f"section{counter}").push(data)
+#         c += 1
+#     counter += 1
+
+counter = 0
+for s in sections:
+    for i in range(len(s)):
+        if s[i] != "":
+            if i != 0 and i+1 < len(s):
+                if "http" in s[i+1]:
+                    data = {"desc" : s[i], "link": s[i+1]}
+                    db.child("Guides").child(f"section{counter}").push(data)
+                    # i += 1
+                elif "http" not in s[i]:
+                    data = {"desc" : s[i]}
+                    # print(data)
+                    db.child("Guides").child(f"section{counter}").push(data)
+            elif i == 0:
+                data = {f"Header" : s[i]}
+                db.child("Guides").child(f"section{counter}").set(data)
+            else:
+                if "https" not in s[i]:
+                    data = {"desc": s[i]}
+                    db.child("Guides").child(f"section{counter}").push(data)
+    counter += 1
+
+# for s in sections:
+#     for i in range(len(s)):
+#         if i != 0:
+            
+#         else:
+#             header = s[i]
+#             # data = {"Header" : header}
+#             # db.child("testing").child(f"section{counter}").set(data)
+
+"""print("")
+    for i in s:
+        print(i, end=None)"""
 
 # to get links and text from list items in un ordered lists & saves to dict
 """codepath_resources = {"headers" : [], "links" : []}

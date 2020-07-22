@@ -2,39 +2,29 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-
-
-    <item
-        android:id="@+id/opBm"
-        android:icon="@drawable/ic_bookmark"
-        android:title="BookMark"
-        app:showAsAction="always"
-        android:color="@android:color/white"
-        />
     <item
         android:id="@+id/opGuide"
         android:icon="@drawable/ic_books"
+        android:title="@string/guide_string"
         android:visible="true"
-        app:showAsAction="always"
-        android:color="@android:color/white"
-
-        android:title="TODO" />
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/opBm"
+        android:icon="@drawable/ic_bookmark"
+        android:title="@string/bookmark_String"
+        app:showAsAction="ifRoom"
+        />
     <item
         android:id="@+id/opBell"
         android:icon="@drawable/ic_notifications"
         android:visible="true"
-        app:showAsAction="always"
-        android:title="TODO" />
+        app:showAsAction="ifRoom"
+        android:title="@string/notifications_String" />
     <item
         android:id="@+id/opChat"
         android:icon="@drawable/ic_chat_bubble"
-        android:title="chat"
+        android:title="@string/chat_string"
         android:visible="true"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/opList"
-        android:icon="@drawable/ic_calendar"
-        android:visible="true"
-        app:showAsAction="always"
-        android:title="TODO" />
+        app:showAsAction="ifRoom" />
+
 </menu>
