@@ -11,12 +11,16 @@
     tools:context=".MainActivity">
 
 
-
+<!-- Used to hide the text in the navbar icons -->
+<!--    app:labelVisibilityMode="unlabeled"-->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        app:itemIconTint="@color/white"
+        android:background="@color/black"
+
+
         android:layout_alignParentBottom="true"
         app:menu="@menu/menu_bottom_navigation" />
 
@@ -30,7 +34,6 @@
         android:id="@+id/flContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
     </FrameLayout>
 
 </RelativeLayout>
