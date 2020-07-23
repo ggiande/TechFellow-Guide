@@ -27,7 +27,6 @@ public class LoginActivity extends AppCompatActivity {
     Button techLogin;
     Button StudentLogin;
     Button btnSignup;
-    User currentUser;
     String userName;
     String userPassword;
     String school;
@@ -114,8 +113,8 @@ public class LoginActivity extends AppCompatActivity {
                         User u=d.getValue(User.class);
                         Log.d("LoginPwd",u.getPwd());
                         if(u.getPwd().equals(password)){
-                            currentUser=u;
-                            goHome(u);
+                            Singleton.setExisting_user(u);
+                            goHome();
                             return;
 
                         }
@@ -137,7 +136,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void goHome(User curr)
+    public void goHome()
     {
         Intent i= new Intent(this,MainActivity.class);
         startActivity(i);
