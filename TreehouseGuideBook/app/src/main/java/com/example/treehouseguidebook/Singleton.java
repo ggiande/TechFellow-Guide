@@ -2,7 +2,9 @@ package com.example.treehouseguidebook;
 
 public class Singleton {
     public static  User existing_user= new User();
-    private Singleton(){}
+    private Singleton(){
+
+    }
 
     public static User getExisting_user() {
         return existing_user;

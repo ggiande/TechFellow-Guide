@@ -3,8 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:background="#CC242525">
+    android:layout_height="110dp"
+    android:background="#4D1B272B">
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/notification_msg"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="51dp"
+        android:layout_marginEnd="-3dp"
+        android:layout_marginBottom="2dp"
+        android:background="@color/black" />
 
     <TextView
         android:id="@+id/notification_msg"
