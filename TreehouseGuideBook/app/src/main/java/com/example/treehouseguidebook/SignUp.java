@@ -94,7 +94,7 @@ public class SignUp extends AppCompatActivity {
             btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"Button works",Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(),"Button works",Toast.LENGTH_LONG).show();
                 String school=etSchool.getText().toString();
                 User curr= new User(etUserId.getText().toString(),
                         etName.getText().toString(),

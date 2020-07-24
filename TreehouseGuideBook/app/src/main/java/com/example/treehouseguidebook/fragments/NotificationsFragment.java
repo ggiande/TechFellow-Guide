@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,11 +17,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.treehouseguidebook.NotificationsAdapter;
 import com.example.treehouseguidebook.R;
 import com.example.treehouseguidebook.Singleton;
 import com.example.treehouseguidebook.User;
+import com.example.treehouseguidebook.compose;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,11 +38,13 @@ public class NotificationsFragment extends Fragment {
 
   RecyclerView rvNotifications;
   User current_user;
-  Button btnCompose;
+  ImageButton btnCompose;
   protected List<String> allPosts;
   protected NotificationsAdapter adapter;
   private DatabaseReference myRef;
   private FirebaseDatabase database;
+
+
 
 
 
@@ -67,20 +72,27 @@ public class NotificationsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
+        Log.d("NotFrag","enter");
 
         //find current user thats logged into the app
         //current_user=Singleton.getExisting_user();
-        current_user= new User("USCD","Student");
+        current_user= new User("USCD","TechFellow"); //only for testing
+
 
 
         rvNotifications =view.findViewById(R.id.rvNotfications);
         allPosts= new ArrayList<>();
+        Log.d("NotFrag","declare btn");
         btnCompose= view.findViewById(R.id.btnCompose);
 
         //set visibitly of Compose button
         //Students cannot compose messages
-        if(current_user.getRole().equals("TechFellow"))
+        Log.d("NotFrag","before button");
+
+        if(current_user.getRole().equals("Student"))
         {
+            Log.d("NotFrag","enter invisible");
+
             btnCompose.setVisibility(View.INVISIBLE);
         }
 
@@ -88,6 +100,7 @@ public class NotificationsFragment extends Fragment {
         btnCompose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("NotFrag","enter compose activity button");
                 Compose();
             }
         });
@@ -113,7 +126,6 @@ public class NotificationsFragment extends Fragment {
                 {
                     String msg=d.getValue().toString();
                     allPosts.add(msg);
-                    Log.d("Notfications",msg);
                 }
 
                 //create and connect recycler view to adapter
@@ -138,7 +150,9 @@ public class NotificationsFragment extends Fragment {
     }
 
     private void Compose() {
-        Context context=getContext();
+        Log.d("NotFrag","enter compose activity");
+        Intent i= new Intent(getContext(), compose.class);
+        startActivity(i);
 
     }
 
