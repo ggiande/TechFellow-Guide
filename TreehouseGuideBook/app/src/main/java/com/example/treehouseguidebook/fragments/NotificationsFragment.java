@@ -48,8 +48,6 @@ public class NotificationsFragment extends Fragment {
 
 
 
-
-
     public NotificationsFragment() {
         // Required empty public constructor
     }

@@ -1,39 +1,56 @@
-package com.example.treehouseguidebook;
+package com.example.treehouseguidebook.fragments;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.example.treehouseguidebook.fragments.NotificationsFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.treehouseguidebook.R;
+import com.example.treehouseguidebook.User;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class compose extends AppCompatActivity {
+public class ComposeFragment extends Fragment {
+
     EditText etMsg;
     Button btnPost;
     User current_user;
     private DatabaseReference myRef;
     private FirebaseDatabase database;
 
-    final FragmentManager fragmentManager = getSupportFragmentManager();
+    public ComposeFragment() {
+        // Required empty public constructor
+    }
+
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_compose);
 
-        etMsg=findViewById(R.id.etN);
-        btnPost=findViewById(R.id.btnPost2);
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_compose, container, false);
+
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        etMsg=view.findViewById(R.id.etNotify);
+        btnPost=view.findViewById(R.id.button);
         //find current user thats logged into the app
         //current_user=Singleton.getExisting_user();
         current_user= new User("USCD","TechFellow"); //only for testing
@@ -48,18 +65,11 @@ public class compose extends AppCompatActivity {
                 String message=etMsg.getText().toString();
                 String keyid=myRef.push().getKey().toString();
                 myRef.child(keyid).setValue(message);
-                Toast.makeText(compose.this,"Notification Posted",Toast.LENGTH_SHORT);
-                etMsg.setText("");
-                goHome();
+                Fragment fragment = new NotificationsFragment();
+
 
 
             }
         });
-
-    }
-
-    private void goHome() {
-        Intent i= new Intent(this,MainActivity.class);
-        startActivity(i);
     }
 }

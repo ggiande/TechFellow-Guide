@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <EditText
+        android:id="@+id/etNotify"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="167dp"
+        android:layout_marginEnd="0dp"
+        android:background="#FAF9F9"
+        android:backgroundTint="#4D455555"
+        android:ems="10"
+        android:hint="Compose a Notification "
+        android:inputType="textPersonName"
+        android:textColor="#FAF9F9"
+        android:textColorHint="#FBFBFB" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="67dp"
+        android:layout_below="@+id/etNotify"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="-1dp"
+        android:background="#3B6263"
+        android:text="POST"
+        android:textColor="#F1EEEE"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+</RelativeLayout>
