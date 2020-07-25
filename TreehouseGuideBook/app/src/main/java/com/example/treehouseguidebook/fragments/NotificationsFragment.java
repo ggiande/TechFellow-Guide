@@ -110,7 +110,7 @@ public class NotificationsFragment extends Fragment {
 
 
 
-        //connect to database
+       //connect to database
         database = FirebaseDatabase.getInstance();
         myRef=database.getReference("schools").child(current_user.getUni()).child("Notifications");
 
