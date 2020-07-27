@@ -54,6 +54,8 @@ public class SignUp extends AppCompatActivity {
         btnReg=findViewById(R.id.btnReg);
         database=FirebaseDatabase.getInstance();
         myRef=database.getReference("schools");
+                //.child(school).child(role);
+
 
         //create adapter for roles spinner
         String[] roles= new String[]{"Chose a Role","Student","TechFellow"};
@@ -72,22 +74,8 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
+        ;
 
-
-       /* //read data from schools node to find current schools
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot d: snapshot.getChildren())
-                    schools.add(d.getKey().toString());
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*/
 
 
 
@@ -96,18 +84,53 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View v) {
                 //Toast.makeText(getApplicationContext(),"Button works",Toast.LENGTH_LONG).show();
                 String school=etSchool.getText().toString();
-                User curr= new User(etUserId.getText().toString(),
+                final User curr= new User(etUserId.getText().toString(),
                         etName.getText().toString(),
                         etEmail.getText().toString(),
                         school,
                         etPassword.getText().toString(),
                         role);
-                //String keyid=myRef.child(school).child(role).push().getKey().toString();
-                //curr.setUser_id(keyid);
-                //child(key).setValue(user)
-                myRef.child(school).child(role).child(curr.getUsername()).setValue(curr);
-                Singleton.setExisting_user(curr);
-                goHome();
+                //read data from schools node to find current schools
+                myRef.child(curr.getUni()).child(role).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot d: snapshot.getChildren())
+                        {
+                            Log.d("Login",d.getKey());
+                            if( curr.getUsername().equals(d.getKey().toString()))
+                            {
+                                Toast.makeText(getApplicationContext(),"Username Already exists",Toast.LENGTH_SHORT).show();
+                                etUserId.setText("");
+                                etPassword.setText("");
+                                return;
+
+                            }
+
+                            if(d.getValue(User.class).getEmail().equals(curr.getEmail())){
+                                Toast.makeText(getApplicationContext(),"Account already exists",Toast.LENGTH_SHORT).show();
+                                etUserId.setText("");
+                                etPassword.setText("");
+                                etEmail.setText("");
+                                return;
+
+                            }
+
+                            //User u=d.getValue(User.class);
+
+
+                        }
+                        myRef.child(curr.getUni()).child(role).child(curr.getUsername()).setValue(curr);
+                        Singleton.setExisting_user(curr);
+                        goHome();
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
 
 
 

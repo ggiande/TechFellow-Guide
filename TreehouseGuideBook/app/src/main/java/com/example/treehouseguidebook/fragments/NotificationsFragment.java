@@ -80,16 +80,12 @@ public class NotificationsFragment extends Fragment {
 
         rvNotifications =view.findViewById(R.id.rvNotfications);
         allPosts= new ArrayList<>();
-        Log.d("NotFrag","declare btn");
         btnCompose= view.findViewById(R.id.btnCompose);
 
         //set visibitly of Compose button
         //Students cannot compose messages
-        Log.d("NotFrag","before button");
-
         if(current_user.getRole().equals("Student"))
         {
-            Log.d("NotFrag","enter invisible");
 
             btnCompose.setVisibility(View.INVISIBLE);
         }
@@ -98,7 +94,6 @@ public class NotificationsFragment extends Fragment {
         btnCompose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("NotFrag","enter compose activity button");
                 Compose();
             }
         });
