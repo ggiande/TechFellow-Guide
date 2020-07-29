@@ -1,7 +1,9 @@
 package com.example.treehouseguidebook;
 
 import android.content.ComponentName;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -12,6 +14,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.treehouseguidebook.fragments.GuideFragment;
 import com.example.treehouseguidebook.fragments.NotificationsFragment;
+import com.example.treehouseguidebook.fragments.UsersFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
@@ -22,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
         setContentView(R.layout.activity_main);
 
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                     fragment = new NotificationsFragment();
                     Toast.makeText(MainActivity.this, "Clicked on Notifications Bell", Toast.LENGTH_SHORT).show();
                 } else if (menuItem.getItemId() == R.id.opChat){
-//                    fragment = new GuideFragment();
+                    fragment = new UsersFragment();
                     Toast.makeText(MainActivity.this, "Clicked on Chat", Toast.LENGTH_SHORT).show();
                 } else if (menuItem.getItemId() == R.id.opBm) {
 //                    fragment = new GuideFragment();
