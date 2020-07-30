@@ -70,11 +70,10 @@ public class NotificationsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-        Log.d("NotFrag","enter");
 
         //find current user thats logged into the app
-        //current_user=Singleton.getExisting_user();
-        current_user= new User("USCD","TechFellow"); //only for testing
+        current_user=Singleton.getExisting_user();
+        //current_user= new User("USCD","TechFellow"); //only for testing
 
 
 
@@ -143,7 +142,6 @@ public class NotificationsFragment extends Fragment {
     }
 
     private void Compose() {
-        Log.d("NotFrag","enter compose activity");
         Intent i= new Intent(getContext(), compose.class);
         startActivity(i);
 

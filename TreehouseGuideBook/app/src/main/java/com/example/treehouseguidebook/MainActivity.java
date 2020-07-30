@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.treehouseguidebook.fragments.GuideFragment;
 import com.example.treehouseguidebook.fragments.NotificationsFragment;
+import com.example.treehouseguidebook.fragments.SettingsFragment;
 import com.example.treehouseguidebook.fragments.UsersFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -45,12 +46,11 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Clicked on Notifications Bell", Toast.LENGTH_SHORT).show();
                 }
                 else if (menuItem.getItemId() == R.id.opSetting){
-                    //fragment = new NotificationsFragment();
-                    Toast.makeText(MainActivity.this, "Clicked on Notifications Bell", Toast.LENGTH_SHORT).show();
+                    fragment = new SettingsFragment();
+                    Toast.makeText(MainActivity.this, "Clicked on Settings", Toast.LENGTH_SHORT).show();
                 }
+
                 else if (menuItem.getItemId() == R.id.opChat){
-//                    fragment = new GuideFragment();
-                } else if (menuItem.getItemId() == R.id.opChat){
                     fragment = new UsersFragment();
                     Toast.makeText(MainActivity.this, "Clicked on Chat", Toast.LENGTH_SHORT).show();
                 }
