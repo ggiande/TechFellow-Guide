@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+
+    tools:context=".fragments.SettingsFragment">
+
+    <Button
+        android:id="@+id/btnWithdraw"
+        android:layout_width="323dp"
+        android:layout_height="73dp"
+        android:layout_below="@+id/btnLogout"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="44dp"
+        android:background="#676767"
+        android:text="WITHDRAW "
+        android:textColor="#EFECEC"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="323dp"
+        android:layout_height="73dp"
+        android:layout_below="@+id/btnChangePwd"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginEnd="44dp"
+        android:background="#3B6263"
+        android:text="LOGOUT "
+        android:textColor="#EFECEC"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/heading2"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:text="SETTINGS"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/heading2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="-4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="0dp"
+        android:background="@color/White" />
+
+    <Button
+        android:id="@+id/btnChangePwd"
+        android:layout_width="323dp"
+        android:layout_height="73dp"
+        android:layout_below="@+id/line"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="234dp"
+        android:layout_marginEnd="44dp"
+        android:background="#3B6263"
+        android:text="CHANGE PASSWORD  "
+        android:textColor="#EFECEC"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+</RelativeLayout>
+

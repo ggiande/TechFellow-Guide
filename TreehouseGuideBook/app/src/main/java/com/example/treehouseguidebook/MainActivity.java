@@ -39,13 +39,23 @@ public class MainActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.opGuide){
                     fragment = new GuideFragment();
                     Toast.makeText(MainActivity.this, "Clicked on Guide", Toast.LENGTH_SHORT).show();
-                } else if (menuItem.getItemId() == R.id.opBell){
+                }
+                else if (menuItem.getItemId() == R.id.opBell){
                     fragment = new NotificationsFragment();
                     Toast.makeText(MainActivity.this, "Clicked on Notifications Bell", Toast.LENGTH_SHORT).show();
+                }
+                else if (menuItem.getItemId() == R.id.opSetting){
+                    //fragment = new NotificationsFragment();
+                    Toast.makeText(MainActivity.this, "Clicked on Notifications Bell", Toast.LENGTH_SHORT).show();
+                }
+                else if (menuItem.getItemId() == R.id.opChat){
+//                    fragment = new GuideFragment();
                 } else if (menuItem.getItemId() == R.id.opChat){
                     fragment = new UsersFragment();
                     Toast.makeText(MainActivity.this, "Clicked on Chat", Toast.LENGTH_SHORT).show();
-                } else if (menuItem.getItemId() == R.id.opBm) {
+                }
+
+                else if (menuItem.getItemId() == R.id.opBm) {
 //                    fragment = new GuideFragment();
                     Toast.makeText(MainActivity.this, "Clicked on Bookmarks", Toast.LENGTH_SHORT).show();
                 }

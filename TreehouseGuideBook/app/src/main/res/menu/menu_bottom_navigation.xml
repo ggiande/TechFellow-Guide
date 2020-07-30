@@ -17,14 +17,20 @@
     <item
         android:id="@+id/opBell"
         android:icon="@drawable/ic_notifications"
+        android:title="@string/notifications_String"
         android:visible="true"
-        app:showAsAction="ifRoom"
-        android:title="@string/notifications_String" />
+        app:showAsAction="always" />
     <item
         android:id="@+id/opChat"
         android:icon="@drawable/ic_chat_bubble"
         android:title="@string/chat_string"
         android:visible="true"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/opSetting"
+        android:icon="@drawable/ic_settings"
+        android:title="Settings"
+        android:visible="true"
+        app:showAsAction="always" />
 
 </menu>
