@@ -1,6 +1,7 @@
 package com.example.treehouseguidebook.fragments;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,6 +22,8 @@ import com.example.treehouseguidebook.compose;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class SettingsFragment extends Fragment {
     Button btnChange;
     Button btnLogOut;
@@ -31,6 +34,7 @@ public class SettingsFragment extends Fragment {
     User current_user;
     private DatabaseReference myRef;
     private FirebaseDatabase database;
+    private SharedPreferences sp;
 
     public SettingsFragment() {
         // Required empty public constructor
@@ -64,6 +68,7 @@ public class SettingsFragment extends Fragment {
         newPwd.setVisibility(view.INVISIBLE);
         btnCancel.setVisibility(view.INVISIBLE);
         btnSet.setVisibility(view.INVISIBLE);
+        sp = getContext().getSharedPreferences("login", MODE_PRIVATE);
 
         //Current User
         current_user=Singleton.getExisting_user();
@@ -76,6 +81,8 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Singleton.setExisting_user(null);// Logout by setting user as null
+                sp.edit().clear().apply();
+                sp.edit().putBoolean("logged", false).apply();
                 Intent i= new Intent(getContext(), LoginActivity.class);
                 startActivity(i);
             }
@@ -135,6 +142,8 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 myRef.child(current_user.getUsername()).removeValue();
+                sp.edit().clear().apply();
+                sp.edit().putBoolean("logged", false).apply();
                 Toast.makeText(getContext(), "Account Deactivated", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(getContext(), LoginActivity.class);
                 startActivity(i);

@@ -35,8 +35,8 @@ public class compose extends AppCompatActivity {
         etMsg=findViewById(R.id.etN);
         btnPost=findViewById(R.id.btnPost2);
         //find current user thats logged into the app
-        //current_user=Singleton.getExisting_user();
-        current_user= new User("USCD","TechFellow"); //only for testing
+        current_user=Singleton.getExisting_user();
+//        current_user= new User("USCD","TechFellow"); //only for testing
 
         //connect to database
         database = FirebaseDatabase.getInstance();

@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
@@ -30,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     String userName;
     String userPassword;
     String school;
+    SharedPreferences sp;
     private DatabaseReference myRef;
     private FirebaseDatabase database;
     
@@ -46,6 +48,17 @@ public class LoginActivity extends AppCompatActivity {
 
         database=FirebaseDatabase.getInstance();
 
+        sp = getSharedPreferences("login", MODE_PRIVATE);
+
+//        Log.i("G", sp.getString("userId", " "));
+        if(sp.getBoolean("logged", true)){
+            goHome();
+            return;
+        }
+
+//        User cur = Singleton.getExisting_user();
+//
+//        Log.i("Testing", cur.getName() + "name");
 
         userName=etUser.getText().toString();
         userPassword=etPwd.getText().toString();
@@ -95,9 +108,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-
-
-
     public void Auth(DatabaseReference database, final String userId, final String password)
     {
           //read data from schools node to find current schools
@@ -114,6 +124,9 @@ public class LoginActivity extends AppCompatActivity {
                         Log.d("LoginPwd",u.getPwd());
                         if(u.getPwd().equals(password)){
                             Singleton.setExisting_user(u);
+                            sp.edit().putString("userId", userId).apply();
+                            sp.edit().putString("UserSchool", u.getUni()).apply();
+                            sp.edit().putBoolean("logged", true).apply();
                             goHome();
                             return;
 
