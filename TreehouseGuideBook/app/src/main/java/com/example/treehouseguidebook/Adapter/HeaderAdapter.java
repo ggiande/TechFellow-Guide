@@ -33,6 +33,8 @@ public class HeaderAdapter extends RecyclerView.Adapter<HeaderAdapter.ViewHolder
     private DatabaseReference ref;
     private FirebaseDatabase database;
 
+    String header;
+
 
     public HeaderAdapter(Context mContext, List<String> headers){
         this.mContext = mContext;
@@ -48,7 +50,7 @@ public class HeaderAdapter extends RecyclerView.Adapter<HeaderAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull HeaderAdapter.ViewHolder holder, int position) {
-        String header = headers.get(position);
+         header = headers.get(position);
 
         holder.header.setText(header);
 //        Log.i("WORKS", header);
@@ -59,7 +61,6 @@ public class HeaderAdapter extends RecyclerView.Adapter<HeaderAdapter.ViewHolder
                 database = FirebaseDatabase.getInstance();
 
                 ref=database.getReference("Guides");
-//                Log.i("HEader", header);
                 ref.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -67,7 +68,6 @@ public class HeaderAdapter extends RecyclerView.Adapter<HeaderAdapter.ViewHolder
 //                            Log.i("TAG", d.getKey());
                             for(DataSnapshot d1: d.getChildren()){
 //                                Log.i("TAG", d1.getKey());
-//                                Log.i("WORKS", d1.getValue().toString());
                                 if(d1.getValue().toString().equals(header)){
 //                                    Log.i("WORKS", header +  "  = " + d1.getValue());
                                     String section = d.getKey();
@@ -81,7 +81,6 @@ public class HeaderAdapter extends RecyclerView.Adapter<HeaderAdapter.ViewHolder
                                             .commit();
                                 }
                             }
-//                            return;
                         }
                     }
 

@@ -28,6 +28,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     private Context mContext;
     private List<User> mUsers;
+    User user;
+    User currentUser;
 
     public UserAdapter(Context mContext, List<User> mUsers){
         this.mContext = mContext;
@@ -43,8 +45,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        User user = mUsers.get(position);
-        User currentUser = Singleton.getExisting_user();
+         user = mUsers.get(position);
+         currentUser = Singleton.getExisting_user();
         if (user.getEmail().equals(currentUser.getEmail())){
             holder.username.setText(user.getRole() + user.getName());
         }
