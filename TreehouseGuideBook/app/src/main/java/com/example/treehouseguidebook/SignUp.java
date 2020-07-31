@@ -89,7 +89,7 @@ public class SignUp extends AppCompatActivity {
                         etEmail.getText().toString(),
                         school,
                         etPassword.getText().toString(),
-                        role,new ArrayList<String>());
+                        role);
                 //read data from schools node to find current schools
                 myRef.child(curr.getUni()).child(role).addValueEventListener(new ValueEventListener() {
                     @Override

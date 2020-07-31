@@ -193,7 +193,7 @@ public class ChatFragment extends Fragment {
         ref.child("Chats").child(fuser.getUni()).child(Rusername).push().setValue(hashMap);
     }
 
-    private void readMessages(String myid, String userId){
+    private void readMessages(final String myid, final String userId){
         mchat = new ArrayList<>();
 
         ref = FirebaseDatabase.getInstance().getReference("Chats")

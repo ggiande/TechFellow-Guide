@@ -1,5 +1,6 @@
 package com.example.treehouseguidebook;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -9,17 +10,16 @@ public class User {
     public String uni;
     public String pwd;
     public String role;
-    public List<String> bookmarks;
+    //public List<Section> bookmarks;
 
-    public User(String username,String name,String email, String uni, String pwd, String role,List<String> marks) {
+    /*public User(String username,String name,String email, String uni, String pwd, String role,List<Section> marks) {
         this.username = username;
         this.name = name;
         this.uni = uni;
         this.pwd = pwd;
         this.role = role;
         this.email=email;
-        this.bookmarks=marks;
-    }
+    }*/
     public User(String username,String name,String email, String uni, String pwd, String role) {
         this.username = username;
         this.name = name;
@@ -55,7 +55,11 @@ public class User {
         return role;
     }
 
-    public List<String> getBookmarks() { return bookmarks; }
+    /*public List<Section> getBookmarks() { return bookmarks; }
+
+    public void setBookmarks(List<Section> bookmarks) {
+        this.bookmarks = bookmarks;
+    }*/
 
     public String getName() {return name;}
 
