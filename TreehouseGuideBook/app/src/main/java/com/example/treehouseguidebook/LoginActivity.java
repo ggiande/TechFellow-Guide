@@ -34,7 +34,10 @@ public class LoginActivity extends AppCompatActivity {
     SharedPreferences sp;
     private DatabaseReference myRef;
     private FirebaseDatabase database;
-    
+    private String userID;
+    private String userSCHOOL;
+    private Boolean loggedIn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +53,12 @@ public class LoginActivity extends AppCompatActivity {
 
         sp = getSharedPreferences("login", MODE_PRIVATE);
 
-//        Log.i("G", sp.getString("userId", " "));
-        if(sp.getBoolean("logged", true)){
+        userID = sp.getString("userId", null);
+        userSCHOOL = sp.getString("UserSchool", null);
+        loggedIn = sp.getBoolean("logged", false);
+
+        Log.i("G", sp.getString("userId", " "));
+        if(userID != null && userSCHOOL != null && loggedIn){
             goHome();
             return;
         }
