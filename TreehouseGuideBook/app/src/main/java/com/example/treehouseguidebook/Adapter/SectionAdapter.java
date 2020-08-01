@@ -39,6 +39,7 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.ViewHold
     private DatabaseReference myRef;
     private FirebaseDatabase database;
     public boolean marked;
+    public String webLink;
 
 
     public SectionAdapter(Context context, List<Section> mSection){
@@ -65,6 +66,7 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.ViewHold
 
         holder.description.setText(section.getDesc());
         holder.link.setText(section.getLink());
+        webLink=section.getLink();
         myRef.child("bookmarks").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -104,7 +106,6 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.ViewHold
             description = itemView.findViewById(R.id.description);
             link = itemView.findViewById(R.id.link);
             btnBookmark=itemView.findViewById(R.id.btnBookmark);
-            link.setMovementMethod(LinkMovementMethod.getInstance());
 
             section_unit=itemView.findViewById(R.id.sectiom_unit);
             section_unit.setOnClickListener(new View.OnClickListener() {
