@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.treehouseguidebook.fragments.BookmarksFragment;
 import com.example.treehouseguidebook.fragments.GuideFragment;
 import com.example.treehouseguidebook.fragments.NotificationsFragment;
 import com.example.treehouseguidebook.fragments.SettingsFragment;
@@ -100,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 else if (menuItem.getItemId() == R.id.opBm) {
-//                    fragment = new GuideFragment();
+                    fragment = new BookmarksFragment();
                     Toast.makeText(MainActivity.this, "Clicked on Bookmarks", Toast.LENGTH_SHORT).show();
                 }
 

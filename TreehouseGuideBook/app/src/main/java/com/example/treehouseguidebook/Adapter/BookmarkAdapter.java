@@ -52,7 +52,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
         final Section section = mSection.get(position);
 
         holder.description.setText(section.getDesc());
-        holder.link.setText(section.getLink());
+       // holder.link.setText(section.getLink());
 
 
     }
@@ -65,7 +65,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView description;
-        public TextView link;
+       // public TextView link;
         public ImageButton btnBookmark;
         public RelativeLayout section_unit;
 
@@ -74,7 +74,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
             super(itemView);
 
             description = itemView.findViewById(R.id.description);
-            link = itemView.findViewById(R.id.link);
+            //link = itemView.findViewById(R.id.link);
             btnBookmark=itemView.findViewById(R.id.btnBookmark); btnBookmark.setColorFilter(Color.RED);
             section_unit=itemView.findViewById(R.id.sectiom_unit);
 
@@ -83,7 +83,8 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
                 public void onClick(View v) {
                     Toast.makeText(mContext,"LINK CLICKED ",Toast.LENGTH_SHORT).show();
                     //Fragment fragment= new WebFragment();
-                    WebFragment fragment= WebFragment.newInstance(link.getText().toString());
+                    String url=mSection.get(getAdapterPosition()).getLink();
+                    WebFragment fragment= WebFragment.newInstance(url);
 
                     ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction()
                             .replace(R.id.flContainer,fragment).commit();

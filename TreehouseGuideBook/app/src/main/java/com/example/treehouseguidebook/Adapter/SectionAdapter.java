@@ -65,8 +65,7 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.ViewHold
         final Section section = mSection.get(position);
 
         holder.description.setText(section.getDesc());
-        holder.link.setText(section.getLink());
-        webLink=section.getLink();
+        //holder.link.setText(section.getLink());
         myRef.child("bookmarks").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -94,7 +93,7 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView description;
-        public TextView link;
+        //public TextView link;
         public ImageButton btnBookmark;
         public RelativeLayout section_unit;
 
@@ -104,7 +103,7 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.ViewHold
 
 
             description = itemView.findViewById(R.id.description);
-            link = itemView.findViewById(R.id.link);
+           // link = itemView.findViewById(R.id.link);
             btnBookmark=itemView.findViewById(R.id.btnBookmark);
 
             section_unit=itemView.findViewById(R.id.sectiom_unit);
@@ -113,7 +112,8 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.ViewHold
                 public void onClick(View v) {
                     Toast.makeText(mContext,"LINK CLICKED ",Toast.LENGTH_SHORT).show();
                     //Fragment fragment= new WebFragment();
-                    WebFragment fragment= WebFragment.newInstance(link.getText().toString());
+                    String url=mSection.get(getAdapterPosition()).getLink();
+                    WebFragment fragment= WebFragment.newInstance(url);
 
                     ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction()
                             .replace(R.id.flContainer,fragment).commit();
@@ -130,7 +130,7 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.ViewHold
                 @Override
                 public void onClick(View v) {
                     String desc = description.getText().toString();
-                    String guide_link = link.getText().toString();
+                    String guide_link = mSection.get(getAdapterPosition()).getLink();
                     if(marked==false)
                     {
 

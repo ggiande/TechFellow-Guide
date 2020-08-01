@@ -9,7 +9,6 @@
     android:background="@color/black"
     android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <TextView
         android:id="@+id/heading"
