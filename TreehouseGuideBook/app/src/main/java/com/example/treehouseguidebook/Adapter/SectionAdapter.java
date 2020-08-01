@@ -8,16 +8,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.treehouseguidebook.R;
 import com.example.treehouseguidebook.Section;
 import com.example.treehouseguidebook.Singleton;
 import com.example.treehouseguidebook.User;
+import com.example.treehouseguidebook.fragments.WebFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -90,6 +94,7 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.ViewHold
         public TextView description;
         public TextView link;
         public ImageButton btnBookmark;
+        public RelativeLayout section_unit;
 
 
         public ViewHolder(View itemView){
@@ -100,6 +105,19 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.ViewHold
             link = itemView.findViewById(R.id.link);
             btnBookmark=itemView.findViewById(R.id.btnBookmark);
             link.setMovementMethod(LinkMovementMethod.getInstance());
+
+            section_unit=itemView.findViewById(R.id.sectiom_unit);
+            section_unit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(mContext,"LINK CLICKED ",Toast.LENGTH_SHORT).show();
+                    //Fragment fragment= new WebFragment();
+                    WebFragment fragment= WebFragment.newInstance(link.getText().toString());
+
+                    ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.flContainer,fragment).commit();
+                }
+            });
 
             if(marked){
                 btnBookmark.setColorFilter(Color.RED);

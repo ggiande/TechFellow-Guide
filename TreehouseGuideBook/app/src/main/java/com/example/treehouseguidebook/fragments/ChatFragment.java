@@ -108,7 +108,6 @@ public class ChatFragment extends Fragment {
         ref = FirebaseDatabase.getInstance().getReference("schools")
                 // change school to user.getuni()
                 .child(fuser.getUni());
-        Log.i("Chat", fuser.getUni());
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -133,7 +132,6 @@ public class ChatFragment extends Fragment {
                     if(snapshot.getKey().equals("Student")){
                         for(DataSnapshot s: snapshot.getChildren()){
                             User user = s.getValue(User.class);
-                            Log.i("Checking", user.getName());
                             if(user.getUsername() != null){
                                 if (user.getUsername().equals(Rusername)) {
                                     Log.i("Checking", user.getName());
