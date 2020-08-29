@@ -31,13 +31,7 @@ public class WebFragment extends Fragment {
     private String link;
     WebView webGuide;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @return A new instance of fragment WebFragment.
-     */
+
     public static WebFragment newInstance(String param1) {
         WebFragment fragment = new WebFragment();
         Bundle args = new Bundle();
@@ -65,6 +59,20 @@ public class WebFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_web, container, false);
+
+        Toolbar toolbar = view.findViewById(R.id.toolbar2);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("");
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = new GuideFragment();
+                ((FragmentActivity)getActivity()).getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.flContainer, fragment)
+                        .commit();
+            }
+        });
 
         return view;
     }
