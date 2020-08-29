@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.style.BulletSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,8 +45,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
          user = mUsers.get(position);
+//         Log.i("chatch", user.getName());
          currentUser = Singleton.getExisting_user();
         if (user.getEmail().equals(currentUser.getEmail())){
             holder.username.setText(user.getRole() + user.getName());
@@ -54,11 +56,15 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             holder.username.setText(user.getName() + " - " + user.getRole());
         }
 
+//        Log.i("TAGGG", String.valueOf(holder.getAdapterPosition()));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                user = mUsers.get(holder.getAdapterPosition());
+//                Log.i("TAGGG", String.valueOf(holder.getAdapterPosition()));
                 Fragment fragment = new ChatFragment();
                 Bundle bundle = new Bundle();
+                Log.i("CHECKVIEW", view.toString());
                 bundle.putString("username", user.getUsername());
                 fragment.setArguments(bundle);
                 ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction()

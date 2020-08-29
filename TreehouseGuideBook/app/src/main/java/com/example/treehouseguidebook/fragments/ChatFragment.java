@@ -87,7 +87,7 @@ public class ChatFragment extends Fragment {
 
         if (bundle != null){
             Rusername = bundle.getString("username");
-            Log.i("ChatFragment", Rusername);
+            Log.i("checkingchat", Rusername);
         }
 
         btn_send.setOnClickListener(new View.OnClickListener() {

@@ -49,7 +49,7 @@ public class HeaderAdapter extends RecyclerView.Adapter<HeaderAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HeaderAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final HeaderAdapter.ViewHolder holder, int position) {
          header = headers.get(position);
 
         holder.header.setText(header);
@@ -59,6 +59,7 @@ public class HeaderAdapter extends RecyclerView.Adapter<HeaderAdapter.ViewHolder
             @Override
             public void onClick(View view) {
                 database = FirebaseDatabase.getInstance();
+                header = headers.get(holder.getAdapterPosition());
 
                 ref=database.getReference("Guides");
                 ref.addValueEventListener(new ValueEventListener() {

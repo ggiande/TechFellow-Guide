@@ -90,6 +90,7 @@ public class BookmarksFragment extends Fragment {
         myRef.child("bookmarks").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Sections.clear();
                for(DataSnapshot d: snapshot.getChildren()){
                    String desc=d.getKey().toString();
                    Log.d("bookmark frag",desc);
